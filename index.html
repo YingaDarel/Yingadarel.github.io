@@ -1,12 +1,382 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17253f">
+  <meta name="description" content="Portfolio de Gabin Darel Yinga Happi, étudiant ingénieur en mécatronique et systèmes embarqués à l’ESIX Normandie. Recherche un stage de fin d’études dès février 2027.">
+  <title>Gabin Darel Yinga Happi — Mécatronique & systèmes embarqués</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18243a;
+      --muted: #5c6879;
+      --paper: #f7f8f8;
+      --surface: #ffffff;
+      --line: #dfe5e7;
+      --navy: #17253f;
+      --navy-soft: #25385c;
+      --teal: #327487;
+      --teal-soft: #e4f0f1;
+      --gold: #e5b66d;
+      --shadow: 0 18px 52px rgba(18, 35, 59, .09);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .hero-shell { background: radial-gradient(circle at 98% -25%, transparent 0 200px, rgba(255,255,255,.075) 201px 202px, transparent 203px), radial-gradient(circle at 31% 110%, transparent 0 154px, rgba(102,176,184,.18) 155px 156px, transparent 157px), var(--navy); color: #f8fafc; position: relative; }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; z-index: 1; }
+    .brand { text-decoration: none; display: inline-flex; align-items: center; gap: 12px; font-weight: 720; letter-spacing: -.02em; }
+    .brand-mark { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.35); border-radius: 12px; color: #c8e6e4; font-size: 14px; letter-spacing: .04em; }
+    .brand small { display: block; color: #b8c3d1; font-size: 14px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: #d8e0e9; font-size: 14px; text-decoration: none; transition: color .18s ease; }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links .nav-contact { border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 9px 16px; color: #fff; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); align-items: center; gap: 72px; padding: 54px 0 78px; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #acd1d2; font-size: 14px; font-weight: 720; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+    h1 { margin: 22px 0 18px; max-width: 730px; font-size: clamp(38px, 5.2vw, 66px); line-height: 1.06; letter-spacing: -.055em; font-weight: 730; }
+    h1 span { color: #a9d0d2; }
+    .hero-intro { max-width: 625px; color: #d3dce6; font-size: 17px; line-height: 1.75; margin: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 19px; border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: #b4dcda; color: #12273a; }
+    .button-primary:hover { background: #d2ece9; }
+    .button-secondary { border: 1px solid rgba(255,255,255,.3); color: #f7f9fc; }
+    .button-secondary:hover { background: rgba(255,255,255,.08); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 34px; color: #c1ccda; font-size: 14px; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .meta-dot { width: 7px; height: 7px; border-radius: 50%; background: #84c8aa; box-shadow: 0 0 0 4px rgba(132,200,170,.12); }
+    .portrait-wrap { width: min(100%, 330px); justify-self: center; position: relative; }
+    .portrait-frame { aspect-ratio: .88; position: relative; overflow: hidden; border-radius: 160px 160px 24px 24px; border: 1px solid rgba(211,234,234,.45); background: #f1f1ef; box-shadow: 0 22px 60px rgba(0,0,0,.23); }
+    .portrait-frame img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 28%; }
+    .portrait-label { position: absolute; right: -20px; bottom: 28px; background: #fff; color: var(--ink); padding: 12px 16px; border-radius: 10px; box-shadow: var(--shadow); font-size: 14px; line-height: 1.4; }
+    .portrait-label strong { display: block; font-size: 14px; }
+    .portrait-index { position: absolute; top: 20px; left: -22px; background: var(--teal); color: white; border-radius: 999px; padding: 8px 12px; font-size: 14px; font-weight: 750; letter-spacing: .12em; }
+    .availability { background: var(--teal-soft); border-bottom: 1px solid #d5e5e6; }
+    .availability-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 17px; }
+    .availability-copy { display: flex; align-items: center; gap: 13px; color: #244658; font-size: 14px; }
+    .availability-icon { flex: 0 0 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #fff; color: var(--teal); font-weight: 800; }
+    .availability-copy strong { color: #17384b; }
+    .availability-link { text-decoration: none; color: #245e70; font-size: 14px; font-weight: 750; white-space: nowrap; }
+    main { padding-bottom: 40px; }
+    .section { padding: 84px 0 0; scroll-margin-top: 20px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    .section-kicker { color: var(--teal); font-size: 14px; font-weight: 760; letter-spacing: .16em; text-transform: uppercase; }
+    h2 { margin: 7px 0 0; font-size: clamp(29px, 3.4vw, 42px); line-height: 1.12; letter-spacing: -.04em; }
+    .section-note { max-width: 430px; color: var(--muted); font-size: 14px; margin: 0 0 2px; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: 0 3px 12px rgba(20,38,60,.025); }
+    .project-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); gap: 30px; align-items: center; padding: 31px; }
+    .project-topline { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 17px; }
+    .project-number { color: var(--teal); font-size: 14px; font-weight: 760; letter-spacing: .12em; }
+    .project-status { border-radius: 999px; background: #eef4f1; color: #376850; padding: 5px 10px; font-size: 14px; font-weight: 700; }
+    .project-card h3 { font-size: 21px; letter-spacing: -.025em; line-height: 1.25; margin: 0 0 11px; }
+    .project-card p { color: var(--muted); font-size: 14px; margin: 0; }
+    .project-card ul { color: var(--muted); font-size: 14px; padding-left: 18px; margin: 13px 0 0; }
+    .project-card li + li { margin-top: 5px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 19px; }
+    .tag { display: inline-flex; align-items: center; border: 1px solid #dfe8e8; border-radius: 6px; padding: 5px 8px; color: #335c67; font-size: 14px; font-weight: 650; line-height: 1.3; }
+    .project-aside { background: #f2f6f5; border: 1px solid #e0eae8; border-radius: 14px; padding: 21px; }
+    .project-aside-label { color: var(--teal); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .project-aside strong { display: block; margin-top: 9px; font-size: 17px; line-height: 1.35; }
+    .project-aside p { margin-top: 8px; font-size: 14px; }
+    .experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .experience-card { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 25px 26px 24px 30px; }
+    .experience-card::before { content: ""; position: absolute; top: 27px; bottom: 27px; left: 0; width: 3px; background: var(--teal); border-radius: 0 4px 4px 0; }
+    .experience-date { color: var(--teal); font-size: 14px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .experience-card h3 { margin: 9px 0 3px; font-size: 18px; letter-spacing: -.02em; }
+    .experience-place { color: #536274; font-size: 14px; font-weight: 650; }
+    .experience-card ul { color: var(--muted); font-size: 14px; padding-left: 18px; margin: 15px 0 0; }
+    .experience-card li + li { margin-top: 7px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .skill-card { padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+    .skill-card h3 { font-size: 14px; margin: 0 0 12px; }
+    .skill-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin: 0; }
+    .training { display: grid; grid-template-columns: .85fr 1.15fr; gap: 38px; align-items: start; }
+    .training-intro { padding: 24px; background: var(--navy); color: #f8fafc; border-radius: var(--radius); }
+    .training-intro .section-kicker { color: #aad0d2; }
+    .training-intro h3 { font-size: 21px; line-height: 1.3; margin: 12px 0 9px; letter-spacing: -.02em; }
+    .training-intro p { color: #c8d3df; font-size: 14px; margin: 0; }
+    .timeline { border-left: 1px solid #cfdcdd; padding-left: 24px; }
+    .timeline-item { position: relative; padding: 0 0 22px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; left: -30px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--teal); border: 3px solid var(--paper); box-shadow: 0 0 0 1px #b8cfd1; }
+    .timeline-year { color: var(--teal); font-size: 14px; font-weight: 760; letter-spacing: .1em; text-transform: uppercase; }
+    .timeline-item h3 { margin: 4px 0 1px; font-size: 16px; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: 14px; }
+    .language-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .language-chip { padding: 6px 10px; border: 1px solid rgba(255,255,255,.23); border-radius: 7px; color: #e4edf4; font-size: 14px; }
+    .contact-section { padding: 84px 0 70px; }
+    .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 36px; padding: 38px 42px; border-radius: 22px; background: radial-gradient(circle at 60% -230px, transparent 0 150px, rgba(255,255,255,.12) 151px 152px, transparent 153px), var(--navy); color: white; }
+    .contact-panel .section-kicker { color: #aad0d2; }
+    .contact-panel h2 { max-width: 590px; margin-top: 8px; }
+    .contact-panel p { color: #d1dce6; font-size: 14px; margin: 12px 0 0; }
+    .contact-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .contact-actions .button { white-space: nowrap; }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 19px; color: #d2dde7; font-size: 14px; }
+    .contact-details a { text-decoration: none; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; padding: 19px 0 30px; color: #65707f; font-size: 14px; border-top: 1px solid var(--line); }
+    .footer a { text-decoration: none; }
+    @media (max-width: 820px) {
+      .hero { gap: 35px; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .project-card:first-child { grid-template-columns: 1fr; }
+      .project-aside { max-width: none; }
+      .training { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 36px, var(--max)); }
+      .nav { min-height: 72px; }
+      .nav-links { gap: 0; }
+      .nav-links a:not(.nav-contact) { display: none; }
+      .nav-links .nav-contact { padding: 8px 12px; font-size: 14px; }
+      .hero { grid-template-columns: 1fr; gap: 34px; padding: 42px 0 53px; }
+      h1 { max-width: 540px; font-size: clamp(39px, 12vw, 55px); }
+      .hero-intro { font-size: 16px; }
+      .portrait-wrap { width: min(76%, 280px); justify-self: start; margin-left: 19px; }
+      .portrait-frame { aspect-ratio: 1.02; border-radius: 145px 145px 20px 20px; }
+      .portrait-label { right: -16px; bottom: 17px; }
+      .portrait-index { left: -17px; }
+      .availability-inner { align-items: flex-start; flex-direction: column; gap: 11px; padding-block: 14px; }
+      .availability-copy { align-items: flex-start; font-size: 14px; }
+      .availability-icon { margin-top: 1px; }
+      .availability-link { margin-left: 47px; }
+      .section { padding-top: 64px; }
+      .section-heading { display: block; margin-bottom: 22px; }
+      .section-note { margin-top: 12px; }
+      .project-grid, .experience-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: auto; padding: 24px; }
+      .project-card { padding: 23px; }
+      .skills-grid { gap: 10px; }
+      .skill-card { padding: 16px; }
+      .training { grid-template-columns: 1fr; gap: 25px; }
+      .contact-section { padding: 64px 0 52px; }
+      .contact-panel { padding: 29px 24px; display: block; }
+      .contact-actions { margin-top: 24px; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 390px) {
+      .wrap { width: calc(100% - 32px); }
+      .brand { gap: 9px; font-size: 14px; }
+      .brand-mark { width: 36px; height: 36px; }
+      .hero-meta { gap: 12px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .button { width: 100%; }
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --ink: #eef2f6;
+        --muted: #bac4d0;
+        --paper: #151d29;
+        --surface: #1d2836;
+        --line: #354150;
+        --navy: #101a2b;
+        --navy-soft: #1d2d46;
+        --teal: #84c6ca;
+        --teal-soft: #1d343a;
+        --gold: #e5bd7c;
+        --shadow: 0 18px 52px rgba(0,0,0,.24);
+      }
+      .availability { border-color: #30494d; }
+      .availability-copy, .availability-copy strong, .availability-link { color: #c5e4e4; }
+      .availability-icon { background: #263c43; }
+      .project-status { background: #263b34; color: #a9ddbd; }
+      .tag { border-color: #3b5057; color: #c5e3e2; }
+      .project-aside { background: #202f36; border-color: #35474e; }
+      .experience-place { color: #c0cad4; }
+      .timeline { border-color: #455563; }
+      .timeline-item::before { border-color: var(--paper); box-shadow: 0 0 0 1px #62767b; }
+      .contact-details { color: #d4dce6; }
+      .footer { color: #aab4c0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Bonjour Fils</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ea laborum facilis, dolore voluptatem omnis voluptas perferendis placeat aspernatur reprehenderit, dicta, molestias itaque incidunt quis! Consequuntur quod iure ea neque, pariatur mollitia necessitatibus atque ut dolorum eligendi in asperiores debitis sed voluptas consectetur accusantium voluptate, ipsum exercitationem quis.</p>
+  <div class="hero-shell">
+    <header class="nav wrap">
+      <a class="brand" href="#accueil" aria-label="Gabin Darel Yinga Happi, accueil">
+        <span class="brand-mark" aria-hidden="true">GY</span>
+        <span>Gabin Darel<small>Portfolio ingénieur</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#projets">Projets</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#competences">Compétences</a>
+        <a class="nav-contact" href="#contact">Me contacter</a>
+      </nav>
+    </header>
+
+    <section class="hero wrap" id="accueil" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">Mécatronique · Systèmes embarqués</div>
+        <h1 id="hero-title">Du hardware au code, <span>je donne vie aux systèmes.</span></h1>
+        <p class="hero-intro">Étudiant ingénieur en 5ᵉ année à l’ESIX Normandie, je m’intéresse à l’électronique, aux systèmes embarqués et à la robotique. J’aime relier conception matérielle, programmation et commande pour transformer une idée en système fonctionnel.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projets">Découvrir mes projets <span aria-hidden="true">↘</span></a>
+          <a class="button button-secondary" href="mailto:gabindarelyingahappi@gmail.com">Échanger avec moi <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-meta" aria-label="Informations principales">
+          <span><i class="meta-dot" aria-hidden="true"></i> Basé à Caen, France</span>
+          <span>Mobilité France</span>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <span class="portrait-index">ESIX · 2027</span>
+        <div class="portrait-frame">
+          <img src="data:image/jpeg;base64,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" alt="Portrait de Gabin Darel Yinga Happi" width="200" height="199">
+        </div>
+        <div class="portrait-label"><strong>Ingénieur en devenir</strong>Mécatronique & systèmes embarqués</div>
+      </div>
+    </section>
+  </div>
+
+  <aside class="availability" aria-label="Disponibilité pour un stage">
+    <div class="availability-inner wrap">
+      <div class="availability-copy"><span class="availability-icon" aria-hidden="true">↗</span><span><strong>À la recherche d’un stage de fin d’études</strong><br>6 mois · à partir de février 2027</span></div>
+      <a class="availability-link" href="mailto:gabindarelyingahappi@gmail.com?subject=Stage%20de%20fin%20d%27%C3%A9tudes">Parlons de votre projet <span aria-hidden="true">→</span></a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="section wrap" id="projets" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">Sélection technique</div><h2 id="projects-title">Projets & réalisations</h2></div>
+        <p class="section-note">Des projets à la croisée de l’électronique, du logiciel embarqué et de l’automatique.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div>
+            <div class="project-topline"><span class="project-number">PROJET 01 · ESIX</span><span class="project-status">En cours · 2026–2027</span></div>
+            <h3>Réflectométrie radiofréquence</h3>
+            <p>Étude d’une méthode de mesure RF pour estimer la longueur d’immersion d’une barre métallique dans l’eau.</p>
+            <ul>
+              <li>Modélisation de lignes de transmission dans deux milieux diélectriques : air et eau.</li>
+              <li>Analyse des impédances complexes, de l’impédance caractéristique et des phénomènes de réflexion.</li>
+              <li>Élaboration d’un modèle reliant les grandeurs électriques mesurées à la longueur immergée.</li>
+            </ul>
+            <div class="tags"><span class="tag">Radiofréquence</span><span class="tag">Lignes de transmission</span><span class="tag">Modélisation</span><span class="tag">Électronique</span></div>
+          </div>
+          <aside class="project-aside">
+            <span class="project-aside-label">Objectif du projet</span>
+            <strong>Faire le lien entre une mesure électrique et une grandeur physique.</strong>
+            <p>Un travail de modélisation appliqué à un système composé de milieux air/eau et à l’analyse des réflexions RF.</p>
+          </aside>
+        </article>
+        <article class="project-card">
+          <div class="project-topline"><span class="project-number">PROJET 02 · ESIX</span><span class="project-number">2025–2026</span></div>
+          <h3>Robots équilibristes</h3>
+          <p>Conception et mise au point de robots capables de maintenir leur équilibre grâce à une commande embarquée.</p>
+          <ul>
+            <li>Programmation d’un microcontrôleur STM32 32 bits en C/C++.</li>
+            <li>Implémentation d’un algorithme d’asservissement validé sous MATLAB.</li>
+            <li>Modélisation 3D de pièces, essais et ajustements du fonctionnement.</li>
+          </ul>
+          <div class="tags"><span class="tag">STM32</span><span class="tag">C/C++</span><span class="tag">MATLAB</span><span class="tag">Asservissement</span></div>
+        </article>
+        <article class="project-card">
+          <div class="project-topline"><span class="project-number">PROJET 03 · ESIX</span><span class="project-number">2024–2025</span></div>
+          <h3>Serre autonome</h3>
+          <p>Réalisation d’un système automatisé pilotant des capteurs et des actionneurs pour une serre.</p>
+          <ul>
+            <li>Programmation d’un microcontrôleur 8 bits Intel C8051.</li>
+            <li>Programmation des capteurs et actionneurs, puis tests de fonctionnement.</li>
+          </ul>
+          <div class="tags"><span class="tag">Intel C8051</span><span class="tag">Microcontrôleur</span><span class="tag">Capteurs & actionneurs</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">Expérience professionnelle</div><h2 id="experience-title">Du modèle au terrain</h2></div>
+        <p class="section-note">Une première expérience en ingénierie système, complétée par une expérience de service et de relation client.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="experience-card">
+          <div class="experience-date">Juin – août 2026</div>
+          <h3>Assistant ingénieur système</h3>
+          <div class="experience-place">Groupe ACOME · Mortain-Bocage, France</div>
+          <ul>
+            <li>Modélisation géométrique et physique de torons pour déterminer leurs caractéristiques électriques et dimensionnelles.</li>
+            <li>Développement d’un outil Excel automatisé pour prédire ces caractéristiques à partir du modèle.</li>
+            <li>Mesures expérimentales, comparaison aux prédictions et validation statistique vis-à-vis des intervalles de tolérance.</li>
+          </ul>
+        </article>
+        <article class="experience-card">
+          <div class="experience-date">Août 2025</div>
+          <h3>Stagiaire polyvalent</h3>
+          <div class="experience-place">Norauto · Rots, France</div>
+          <ul>
+            <li>Accueil et relation client, communication professionnelle.</li>
+            <li>Prise de rendez-vous et conception de devis.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="competences" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">Boîte à outils</div><h2 id="skills-title">Compétences</h2></div>
+        <p class="section-note">Une base polyvalente pour intervenir sur les différentes couches d’un système mécatronique.</p>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card"><h3>Programmation embarquée</h3><p>C, C++, Python (bases), HTML/CSS<br>STM32 · Intel C8051 · FreeRTOS</p></article>
+        <article class="skill-card"><h3>Communication & robotique</h3><p>UART · SPI · I²C · TCP/IP · Modbus<br>ROS 2</p></article>
+        <article class="skill-card"><h3>Électronique</h3><p>Électronique analogique, numérique et de puissance<br>LTspice · KiCad</p></article>
+        <article class="skill-card"><h3>Automatique & mécanique</h3><p>Asservissement continu et discret · correcteurs PI, PID, RST<br>MATLAB/Simulink · SolidWorks</p></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="parcours" aria-labelledby="training-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">Formation & langues</div><h2 id="training-title">Mon parcours</h2></div>
+      </div>
+      <div class="training">
+        <div class="training-intro">
+          <div class="section-kicker">ESIX Normandie · Caen</div>
+          <h3>Cycle ingénieur en mécatronique et systèmes embarqués</h3>
+          <p>Formation d’ingénieur articulant électronique, informatique embarquée, automatique et mécanique.</p>
+          <div class="language-row"><span class="language-chip">Français</span><span class="language-chip">Anglais</span></div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><div class="timeline-year">2024 – 2027</div><h3>Cycle ingénieur · Mécatronique et systèmes embarqués</h3><p>ESIX Normandie · Caen, France</p></article>
+          <article class="timeline-item"><div class="timeline-year">2022 – 2024</div><h3>Classe préparatoire</h3><p>ISTAMA · Douala, Cameroun</p></article>
+          <article class="timeline-item"><div class="timeline-year">2021 – 2022</div><h3>Baccalauréat scientifique</h3><p>Collège Saint-Michel · Douala, Cameroun</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section wrap" id="contact" aria-labelledby="contact-title">
+      <div class="contact-panel">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2 id="contact-title">Construisons quelque chose d’utile.</h2>
+          <p>Vous cherchez un stagiaire en systèmes embarqués, électronique ou robotique ? Je serais ravi d’échanger.</p>
+          <div class="contact-details"><a href="mailto:gabindarelyingahappi@gmail.com">gabindarelyingahappi@gmail.com</a><a href="tel:+33666091172">+33 6 66 09 11 72</a><span>Caen · mobilité France</span></div>
+        </div>
+        <div class="contact-actions"><a class="button button-primary" href="mailto:gabindarelyingahappi@gmail.com?subject=Stage%20de%20fin%20d%27%C3%A9tudes">Envoyer un e-mail <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>© 2026 Gabin Darel Yinga Happi</span><a href="#accueil">Retour en haut ↑</a></footer>
 </body>
 </html>
